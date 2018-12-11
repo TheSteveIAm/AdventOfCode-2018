@@ -28,6 +28,9 @@ namespace AdventOfCode
             //Day3 day3 = new Day3();
             //day3.OverlappingInches();
 
+            Day4 day4 = new Day4();
+            day4.GetAnswer();
+
             watch.Stop();
 
             TimeSpan ts = watch.Elapsed;
