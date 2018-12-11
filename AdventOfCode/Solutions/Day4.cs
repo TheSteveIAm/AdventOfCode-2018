@@ -25,12 +25,8 @@ namespace AdventOfCode
 
     class Day4
     {
-
-        //private Tuple<int, DateTime[], int[]> shiftData;
-        //private Dictionary<int, DateTime> shifts = new Dictionary<int, DateTime>(); //id, datetime
         private string path = "../../Input/input4.txt";
 
-        //private List<string> lines = new List<string>();
         private HashSet<GuardLog> logs = new HashSet<GuardLog>();
         private List<GuardProfile> profiles = new List<GuardProfile>();
 
@@ -46,8 +42,6 @@ namespace AdventOfCode
 
             while ((line = reader.ReadLine()) != null)
             {
-                //lines.Add(line.Trim());
-
                 string[] stringSplit = line.Split(']');
                 DateTime dt;
                 DateTime.TryParse(stringSplit[0].Trim('['), out dt);
@@ -57,8 +51,6 @@ namespace AdventOfCode
                     date = dt,
                     entry = stringSplit[1].Trim()
                 };
-
-                //Console.WriteLine(dt + " : " + log.entry);
 
                 logs.Add(log);
             }
@@ -73,8 +65,6 @@ namespace AdventOfCode
 
             foreach (GuardLog log in sortedLogs)
             {
-
-                //Console.WriteLine(log.date + " : " + log.entry);
                 if (log.entry.Contains('#'))
                 {
                     id = int.Parse(log.entry.Split('#')[1].Split(' ')[0]);
@@ -139,37 +129,9 @@ namespace AdventOfCode
             List<GuardProfile> sortedByConsistency = profiles.OrderByDescending(g => g.numberOfTimesAsleepAtSleepiestMinute).ToList();
 
             Console.WriteLine("Guard: " + sortedBySleep[0].id + " slept " + sortedBySleep[0].minutesSlept + " minutes");
-            Console.WriteLine("Minute: " + sortedBySleep[0].sleepiestMinute);
             Console.WriteLine("Guard # * sleepiest minute: " + (sortedBySleep[0].id * sortedBySleep[0].sleepiestMinute));
             Console.WriteLine("Guard # " + sortedByConsistency[0].id + " fell asleep at minute " + sortedByConsistency[0].sleepiestMinute + " " + sortedByConsistency[0].numberOfTimesAsleepAtSleepiestMinute + " times " +
                 " giving a multiplied result of: " + (sortedByConsistency[0].id * sortedByConsistency[0].sleepiestMinute));
-
-            //List<int> sortedMinutes = sortedBySleep[0].rangeAsleep.GroupBy(i => i)
-            //    .OrderByDescending(m => m.Count())
-            //    .Select(m => m.Key).ToList();
-
-            //foreach (int i in sortedMinutes)
-            //{
-            //    Console.WriteLine(i);
-            //}
-
-            //foreach (int i in sortedBySleep[0].rangeAsleep)
-            //{
-            //    Console.WriteLine(i);
-            //}
-
-            //foreach (GuardProfile guard in profiles)
-            //{
-            //    Console.WriteLine("Guard # " + guard.id + " has slept " + guard.minutesSlept);
-            //}
         }
-
-        //public void GetAnswerB()
-        //{
-        //ParseInput(path);
-
-        //        List<GuardProfile> consistentGuards = profiles.GroupBy(g => g)
-        //.OrderByDescending()
-        //}
     }
 }
