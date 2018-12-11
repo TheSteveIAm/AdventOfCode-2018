@@ -44,10 +44,11 @@ namespace AdventOfCode
 
             int shortestChain = input.Count;
 
+            //65 = A, 90 = Z
             for (int i = 65; i < 91; i++)
             {
                 string upper = char.ConvertFromUtf32(i);
-                string lower = char.ConvertFromUtf32(i + 32);
+                string lower = char.ConvertFromUtf32(i + 32); //add 32 to get lowercase
 
                 //Console.WriteLine(upper + " " + lower);
                 //List<char> modInput = input;
@@ -69,25 +70,23 @@ namespace AdventOfCode
             do
             {
                 done = true;
-                //65 = A, 65 + 32 = a (loop through all letters
 
                 int smallestChain = chain.Count;
 
                 for (int i = 0; i < chain.Count - 1; i++)
                 {
 
-                    if ((char.IsLower(chain[i]) && char.IsUpper(chain[i + 1])) ||
-                        char.IsUpper(chain[i]) && char.IsLower(chain[i + 1]))
+                    if (((char.IsLower(chain[i]) && char.IsUpper(chain[i + 1])) ||
+                        char.IsUpper(chain[i]) && char.IsLower(chain[i + 1])) &&
+                        char.ToLower(chain[i]) == char.ToLower(chain[i + 1]))
                     {
-                        if (char.ToLower(chain[i]) == char.ToLower(chain[i + 1]))
-                        {
-                            //Console.WriteLine("Removed: " + nextChar + " and " + input[i]);
-                            chain.RemoveRange(i, 2);
-                            done = false;
-                        }
+                        //Console.WriteLine("Removed: " + nextChar + " and " + input[i]);
+                        chain.RemoveRange(i, 2);
+                        done = false;
                     }
-                    //Console.WriteLine(nextChar);
                 }
+                //Console.WriteLine(nextChar);
+
 
                 //Console.WriteLine(input.Count + " last count:" + lastLen);
             }
