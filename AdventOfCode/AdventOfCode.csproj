@@ -48,6 +48,7 @@
     <Compile Include="Solutions\Day1.cs" />
     <Compile Include="Solutions\Day2.cs" />
     <Compile Include="Solutions\Day3.cs" />
+    <Compile Include="Solutions\Day9.cs" />
     <Compile Include="Solutions\Day8.cs" />
     <Compile Include="Solutions\Day7.cs" />
     <Compile Include="Solutions\Day6.cs" />
